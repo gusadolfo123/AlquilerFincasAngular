@@ -1,0 +1,12 @@
+
+npm i bootstrap --save
+npm i tailwindcss --save-dev
+
+./node_modules/.bin/tailwind init tailwind.config init
+
+ng g c shared/footer --spec=false -skipTests
+ng g c shared/navbar --spec=false -skipTests
+ng g c shared/header --spec=false -skipTests
+ng g c shared/search --spec=false -skipTests
+
+
