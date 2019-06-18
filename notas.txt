@@ -8,5 +8,7 @@ ng g c shared/footer --spec=false -skipTests
 ng g c shared/navbar --spec=false -skipTests
 ng g c shared/header --spec=false -skipTests
 ng g c shared/search --spec=false -skipTests
-
-
+ng g c index 
+ng g c farms 
+ng g c about
+ng g c contact

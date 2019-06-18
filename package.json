@@ -7,7 +7,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "tailwind": "./node_modules/.bin/tailwind build ./src/tailwind-build.css -c ./tailwind.config.js -o ./src/styles.css",
+    "prestart": "npm run tailwind"
   },
   "private": true,
   "dependencies": {
