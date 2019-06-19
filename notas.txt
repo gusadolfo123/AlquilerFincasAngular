@@ -1,6 +1,8 @@
 
 npm i bootstrap --save
 npm i tailwindcss --save-dev
+npm i --save @angular/material @angular/cdk @angular/animations
+npm i --save hammerjs
 
 ./node_modules/.bin/tailwind init tailwind.config init
 
