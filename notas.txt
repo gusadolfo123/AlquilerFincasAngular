@@ -3,6 +3,7 @@ npm i bootstrap --save
 npm i tailwindcss --save-dev
 npm i --save @angular/material @angular/cdk @angular/animations
 npm i --save hammerjs
+npm i --save ngx-hm-carousel
 
 ./node_modules/.bin/tailwind init tailwind.config init
 
@@ -10,7 +11,16 @@ ng g c shared/footer --spec=false -skipTests
 ng g c shared/navbar --spec=false -skipTests
 ng g c shared/header --spec=false -skipTests
 ng g c shared/search --spec=false -skipTests
-ng g c index 
-ng g c farms 
-ng g c about
-ng g c contact
+ng g c shared/slider --spec=false
+
+ng g c main
+ng g m main --routing
+ng g c main/index --module main
+ng g c main/farms --module main
+ng g c main/about --module main
+ng g c main/contact --module main
+ng g c main/farms/detail --module main
+
+ng g m main/farms 
+
+

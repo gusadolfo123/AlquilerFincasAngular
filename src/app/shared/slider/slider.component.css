@@ -1,0 +1,82 @@
+.aniT {
+  transition: all 1s linear;
+}
+
+.transition {
+  transition: all 0.3s ease-in-out !important;
+}
+
+.carousel .content {
+  display: flex;
+}
+
+.carousel .content .item {
+  width: 100%;
+  display: block;
+}
+
+.carousel .content .item .img {
+  width: 100%;
+  max-height: 700px !important;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  padding-bottom: 50%;
+}
+
+.carousel .item {
+  width: 100%;
+  display: block;
+  max-height: 400px !important;
+}
+
+.carousel .item .img {
+  width: 100%;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 0;
+  padding-bottom: 50%;
+}
+
+.carousel .ball {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: black;
+  border: 2px solid;
+  opacity: 0.5;
+}
+
+.carousel .ball.visible {
+  opacity: 1;
+}
+
+.carousel .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background: #ff5252;
+}
+
+.carousel .click-area {
+  width: 50px;
+  text-align: center;
+}
+
+.carousel .click-area i {
+  font-size: 3em;
+}
+
+.right-success {
+  background-color: #21ab64 !important;
+  color: whitesmoke !important;
+}
+
+.left-success {
+  background-color: #21ab64 !important;
+  color: whitesmoke !important;
+}

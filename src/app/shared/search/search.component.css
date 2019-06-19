@@ -1,0 +1,12 @@
+#searchContainer {
+  background: rgb(34, 34, 34);
+  background-image: url('https://picsum.photos/id/594/1000/700');
+  background-blend-mode: soft-light;
+  background-attachment: fixed;
+  background-size: cover;
+  font-weight: bold;
+}
+
+button {
+  background-color: #21ab64 !important;
+}

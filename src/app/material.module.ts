@@ -16,7 +16,7 @@ import {
   MatCardModule,
 } from '@angular/material';
 import { NgModule } from '@angular/core';
-
+import { NgxHmCarouselModule } from 'ngx-hm-carousel';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -34,6 +34,7 @@ import { NgModule } from '@angular/core';
     MatOptionModule,
     MatCommonModule,
     MatCardModule,
+    NgxHmCarouselModule,
   ],
   exports: [
     MatButtonModule,
@@ -51,6 +52,7 @@ import { NgModule } from '@angular/core';
     MatOptionModule,
     MatCommonModule,
     MatCardModule,
+    NgxHmCarouselModule,
   ],
 })
 export class MaterialModule {}
