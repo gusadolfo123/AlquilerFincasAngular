@@ -4,28 +4,13 @@
       <div class="flex-1">
         <label for="" class="text-center">Fechas</label>
         <div class="flex flex-row px-2">
-          <input
-            id="dtEntrada"
-            class="rounded-l-lg bg-gray-200 text-gray-800 px-3 py-2"
-            placeholder="entrada"
-            name="entrada1"
-          />
-          <input
-            id="dtSalida"
-            class="rounded-r-lg bg-gray-200 text-gray-800 px-3 py-2"
-            placeholder="salida"
-            name="salida"
-          />
+          <input id="dtEntrada" class="rounded-l-lg bg-gray-200 text-gray-800 px-3 py-2" placeholder="entrada" name="entrada1" />
+          <input id="dtSalida" class="rounded-r-lg bg-gray-200 text-gray-800 px-3 py-2" placeholder="salida" name="salida" />
         </div>
       </div>
       <div class="flex-1 px-2">
         <label for="" class="text-center">Cantidad Huespedes</label>
-        <input
-          id="huespedes"
-          class="w-full rounded-lg bg-gray-200 text-gray-800 px-3 py-2"
-          placeholder="Nro Huespedes"
-          name="huespedes"
-        />
+        <input id="huespedes" class="w-full rounded-lg bg-gray-200 text-gray-800 px-3 py-2" placeholder="Nro Huespedes" name="huespedes" />
       </div>
       <div class="flex-1 px-2">
         <label for="" class="text-center">Departamento</label>
@@ -38,11 +23,7 @@
       <div class="flex-1 px-2">
         <label for="" class="text-center">_</label>
         <div class="flex justify-center items-center">
-          <a
-            href="/user/signin"
-            class="text-white w-full py-2 bg-green-400 font-bold rounded-lg px-4 hover:bg-green-500 hover:text-white"
-            >Buscar</a
-          >
+          <a href="/user/signin" class="text-white w-full py-2 bg-green-400 font-bold rounded-lg px-4 hover:bg-green-500 hover:text-white">Buscar</a>
         </div>
       </div>
     </div>
@@ -52,42 +33,40 @@
 <div class="text-light py-2" id="searchContainer">
   <form [formGroup]="form" class="container py-4" (ngSubmit)="onSubmit()">
     <div class="row">
-      <div class="col">
-        <label for="actividad" class="">Actividad</label>
-        <select formControlName="op1" name="op1" id="actividad" class="browser-default custom-select">
+      <div class="col text-center">
+        <label>Fechas</label>
+        <div class="flex flex-row px-2 text-center">
+          <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel" class="form-control m-0 rounded-r-none rounded-l-lg bg-gray-200 text-gray-800 border-0">
+            <input matInput formControlName="fecha1" name="fecha1" [matDatepicker]="picker1" (dateInput)="addEvent($event)" (dateChange)="addEvent($event)" placeholder="Entrada" autocomplete="off" />
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel" class="form-control m-0 rounded-l-none rounded-r-lg bg-gray-200  text-gray-800 border-0">
+            <input matInput formControlName="fecha2" name="fecha2" [matDatepicker]="picker2" (dateInput)="addEvent($event)" (dateChange)="addEvent($event)" placeholder="Salida" autocomplete="off" />
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col text-center">
+        <label for="huespedes" class="">Cantidad Huespedes</label>
+        <input id="huespedes" type="number" class="w-full rounded-lg bg-gray-200 text-gray-800 px-3 py-2" placeholder="Nro Huespedes" name="huespedes" />
+      </div>
+      <div class="col text-center">
+        <label for="despartamento" class="">Departamento</label>
+        <select formControlName="op2" name="op2" id="despartamento" class="browser-default custom-select">
           <option selected>Open this select menu</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
       </div>
-      <div class="col">
-        <label for="destino" class="">Destino</label>
-        <select formControlName="op2" name="op2" id="destino" class="browser-default custom-select">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      <div class="col">
-        <label class="">Fecha </label>
-        <mat-form-field class="form-control m-0 ">
-          <input
-            matInput
-            formControlName="fecha"
-            name="fecha"
-            [matDatepicker]="picker"
-            (dateInput)="addEvent($event)"
-            (dateChange)="addEvent($event)"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="col">
-        <label class="">Busqueda</label>
-        <button class="form-control" mat-raised-button color="primary">Encontrar</button>
+
+      <div class="col text-center">
+        <label>Busqueda</label>
+        <div class="flex justify-center items-center">
+          <a href="#" class="form-control" mat-raised-button color="success">Encontrar</a>
+        </div>
       </div>
     </div>
   </form>
