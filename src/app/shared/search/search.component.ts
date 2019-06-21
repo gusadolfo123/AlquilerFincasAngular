@@ -10,7 +10,11 @@ import { MatDatepickerInputEvent } from '@angular/material';
 export class SearchComponent implements OnInit {
   form: FormGroup;
   options: FormGroup;
-  activities = [{ value: 1, viewValue: 'Bicicleta' }, { value: 1, viewValue: 'Caminata' }, { value: 1, viewValue: 'Otro' }];
+  activities = [
+    { value: 1, viewValue: 'Bicicleta' },
+    { value: 1, viewValue: 'Caminata' },
+    { value: 1, viewValue: 'Otro' },
+  ];
   destinies = [{ value: 1, viewValue: 'Bogota' }, { value: 2, viewValue: 'Medellin' }, { value: 3, viewValue: 'Cali' }];
   dataForm: any = { op1: '', op2: '', fecha1: '', fecha2: '' };
 
