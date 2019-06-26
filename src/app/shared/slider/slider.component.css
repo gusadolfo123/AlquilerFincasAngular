@@ -28,7 +28,7 @@
 .carousel .item {
   width: 100%;
   display: block;
-  max-height: 400px !important;
+  max-height: 500px !important;
 }
 
 .carousel .item .img {
@@ -59,7 +59,7 @@
   left: 0;
   width: 0;
   height: 5px;
-  background: #ff5252;
+  background: #21ab64;
 }
 
 .carousel .click-area {
