@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.form = new FormGroup({
