@@ -11,3 +11,12 @@
   background-color: #21ab64 !important;
 }
 
+::ng-deep .mat-form-field-infix{
+  background-color: #edf2f7 !important;
+  border-radius: .3rem!important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+
