@@ -8,7 +8,7 @@
             class="form-control rounded-r-none rounded-l-lg bg-gray-200 text-gray-800 border-0 w-1/2">
             <input matInput formControlName="fecha1" readonly name="fecha1" [matDatepicker]="picker1"
               [matDatepickerFilter]="myFilter" (dateInput)="addEventStart($event)" (dateChange)="addEvent($event)"
-              placeholder="Llegada" autocomplete="off" />
+              placeholder="Llegada" autocomplete="off" (focus)="picker1.open()" />
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
@@ -16,19 +16,24 @@
             class="form-control rounded-l-none rounded-r-lg bg-gray-200  text-gray-800 border-0 w-1/2">
             <input matInput formControlName="fecha2" readonly name="fecha2" [matDatepicker]="picker2"
               [matDatepickerFilter]="myFilter2" (dateInput)="addEventEnd($event)" (dateChange)="addEvent($event)"
-              placeholder="Salida" autocomplete="off" />
+              placeholder="Salida" autocomplete="off" (focus)="picker2.open()" />
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
         </div>
       </div>
-      <div class="col-6 col-md-2 text-center my-2">
-        <label for="huespedes" class="font-bold">Huespedes</label>
-        <input id="huespedes" type="number"
-          class="w-full rounded-lg bg-gray-200 text-gray-800 px-3 py-2 border-0 outline-none"
-          placeholder="Nro Huespedes" name="huespedes" />
-      </div>
       <div class="col-6 col-md-3 text-center my-2">
+        <label for="huespedes" class="font-bold">Huespedes</label>
+        <div class="input-group">
+          <input id="huespedes_mayores" type="number"
+            class="form-control rounded-lg bg-gray-200 text-gray-800 px-3 py-2 border-0 outline-none"
+            placeholder="Adultos" name="huespedes_mayores" />
+          <input id="huespedes_menores" type="number"
+            class="form-control rounded-lg bg-gray-200 text-gray-800 px-3 py-2 border-0 outline-none"
+            placeholder="Niños" name="huespedes_menores" />
+        </div>
+      </div>
+      <div class="col-6 col-md-2 text-center my-2">
         <label for="despartamento" class="font-bold">Departamento</label>
         <select formControlName="op2" name="op2" id="despartamento"
           class="browser-default custom-select border-0 outline-none bg-gray-200">
