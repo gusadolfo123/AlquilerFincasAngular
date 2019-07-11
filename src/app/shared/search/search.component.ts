@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -51,16 +51,19 @@ export class SearchComponent implements OnInit {
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
-    this.dataForm.fecha1 = event.value;
+    // this.dataForm.fecha1 = event.value;
+    console.log(event.value);
   }
 
   addEventStart(event: MatDatepickerInputEvent<Date>) {
-    console.log(event.value);
     this.startDate = event.value;
+    if (this.startDate >= this.endDate) {
+      this.endDate.setDate(this.startDate.getDate() + 1);
+    }
   }
 
   addEventEnd(event: MatDatepickerInputEvent<Date>) {
-    console.log(event.value);
     this.endDate = event.value;
+
   }
 }
