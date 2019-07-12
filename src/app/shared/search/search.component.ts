@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDatepickerInputEvent, MatDatepicker } from '@angular/material';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-search',
@@ -28,19 +27,24 @@ export class SearchComponent implements OnInit {
 
   form: FormGroup;
   options: FormGroup;
-  destinies = [{ value: 1, viewValue: 'Bogota' }, { value: 2, viewValue: 'Medellin' }, { value: 3, viewValue: 'Cali' }, { value: 4, viewValue: 'Amazonas' }];
+  destinies = [
+    { value: 1, viewValue: 'Bogota' },
+    { value: 2, viewValue: 'Medellin' },
+    { value: 3, viewValue: 'Cali' },
+    { value: 4, viewValue: 'Amazonas' },
+  ];
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
   constructor() {}
 
   ngOnInit() {
-    this.form = new FormGroup({      
-      fecha1: new FormControl('', Validators.required),
-      fecha2: new FormControl('', Validators.required),
-      huespedes_mayores: new FormControl('', Validators.required),
-      huespedes_menores: new FormControl('', Validators.required),
-      destinies: new FormControl(this.destinies, Validators.required)
+    this.form = new FormGroup({
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('', Validators.required),
+      elderly_guests: new FormControl('', Validators.required),
+      minor_guests: new FormControl('', Validators.required),
+      destinies: new FormControl(this.destinies, Validators.required),
     });
     this.options = new FormBuilder().group({
       hideRequired: false,
@@ -51,20 +55,19 @@ export class SearchComponent implements OnInit {
   onSubmit() {
     for (const key in this.form.controls) {
       if (this.form.controls.hasOwnProperty(key)) {
-        const element =  this.form.controls[key];
-        console.log(element.value);
+        const element = this.form.controls[key];
+        console.log(element);
       }
     }
   }
 
-  addEvent(event: MatDatepickerInputEvent<Date>) {
-  }
+  addEvent(event: MatDatepickerInputEvent<Date>) {}
 
   addEventStart(event: MatDatepickerInputEvent<Date>) {
     this.startDate = event.value;
     if (this.startDate >= this.endDate) {
       this.endDate.setDate(this.startDate.getDate() + 1);
-      this.form.controls['fecha2'].setValue(this.endDate);      
+      this.form.controls['endDate'].setValue(this.endDate);
     }
     this.picker2.open();
   }

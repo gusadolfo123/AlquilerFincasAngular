@@ -4,19 +4,45 @@
       <div class="col-12 col-md-5 text-center my-2">
         <label class="font-bold">Fechas</label>
         <div class="flex-row">
-          <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel"
-            class="form-control rounded-r-none rounded-l-lg bg-gray-200 text-gray-800 border-0 w-1/2">
-            <input matInput formControlName="fecha1" readonly name="fecha1" [matDatepicker]="picker1"
-              [matDatepickerFilter]="myFilter" (dateInput)="addEventStart($event)" (dateChange)="addEvent($event)"
-              placeholder="Llegada" autocomplete="off" (click)="picker1.open()" />
+          <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel"
+            class="form-control rounded-r-none rounded-l-lg bg-gray-200 text-gray-800 border-0 w-1/2"
+          >
+            <input
+              matInput
+              formControlName="startDate"
+              readonly
+              name="startDate"
+              [matDatepicker]="picker1"
+              [matDatepickerFilter]="myFilter"
+              (dateInput)="addEventStart($event)"
+              (dateChange)="addEvent($event)"
+              placeholder="Llegada"
+              autocomplete="off"
+              (click)="picker1.open()"
+            />
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
-          <mat-form-field [hideRequiredMarker]="options.value.hideRequired" [floatLabel]="options.value.floatLabel"
-            class="form-control rounded-l-none rounded-r-lg bg-gray-200  text-gray-800 border-0 w-1/2">
-            <input matInput formControlName="fecha2" readonly name="fecha2" [matDatepicker]="picker2"
-              [matDatepickerFilter]="myFilter2" (dateInput)="addEventEnd($event)" (dateChange)="addEvent($event)"
-              placeholder="Salida" autocomplete="off" (click)="picker2.open()" />
+          <mat-form-field
+            [hideRequiredMarker]="options.value.hideRequired"
+            [floatLabel]="options.value.floatLabel"
+            class="form-control rounded-l-none rounded-r-lg bg-gray-200  text-gray-800 border-0 w-1/2"
+          >
+            <input
+              matInput
+              formControlName="endDate"
+              readonly
+              name="endDate"
+              [matDatepicker]="picker2"
+              [matDatepickerFilter]="myFilter2"
+              (dateInput)="addEventEnd($event)"
+              (dateChange)="addEvent($event)"
+              placeholder="Salida"
+              autocomplete="off"
+              (click)="picker2.open()"
+            />
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
@@ -25,22 +51,34 @@
       <div class="col-6 col-md-3 text-center my-2">
         <label for="huespedes" class="font-bold">Huespedes</label>
         <div class="input-group">
-          <input id="huespedes_mayores" type="number" formControlName="huespedes_mayores"
+          <input
+            id="elderly_guests"
+            type="number"
+            formControlName="elderly_guests"
             class="outline-none border-0 shadow-none form-control rounded-l-lg bg-gray-200 text-gray-800 px-3 py-2"
-            placeholder="Adultos" name="huespedes_mayores" />
-          <input id="huespedes_menores" type="number" formControlName="huespedes_menores"
+            placeholder="Adultos"
+            name="elderly_guests"
+          />
+          <input
+            id="minor_guests"
+            type="number"
+            formControlName="minor_guests"
             class="outline-none border-0 shadow-none form-control rounded-r-lg bg-gray-200 text-gray-800 px-3 py-2"
-            placeholder="Niños" name="huespedes_menores" />
+            placeholder="Niños"
+            name="minor_guests"
+          />
         </div>
       </div>
       <div class="col-6 col-md-2 text-center my-2">
         <label for="huespedes" class="font-bold">Departamento</label>
-        <mat-form-field [floatLabel]="options.value.floatLabel"
-          class="form-control rounded-r-lg rounded-l-lg bg-gray-200 text-gray-800 border-0">
+        <mat-form-field
+          [floatLabel]="options.value.floatLabel"
+          class="form-control rounded-r-lg rounded-l-lg bg-gray-200 text-gray-800 border-0"
+        >
           <mat-label class="bg-gray-200 pl-3 py-8 rounded-full">Seleccionar...</mat-label>
           <mat-select formControlName="destinies" name="destinies">
             <mat-option *ngFor="let destiny of destinies" [value]="destiny.value">
-              {{destiny.viewValue}}
+              {{ destiny.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
