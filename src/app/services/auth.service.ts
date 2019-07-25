@@ -14,5 +14,6 @@ export class AuthService {
 
   registerUser(user: User) {
     const urlApi = `http://localhost:4545/api/v1/users/register`;
+    return this.client.post(urlApi, user);
   }
 }

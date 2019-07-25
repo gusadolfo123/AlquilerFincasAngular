@@ -25,4 +25,5 @@ ng g m main/farms
 
 
 ng g s services/auth
+ng g s services/company
 

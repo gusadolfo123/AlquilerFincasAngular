@@ -1,18 +1,6 @@
-export interface Coordinate {
-  lat?: number;
-  lan?: number;
-}
-
-export interface Phone {
-  phone_type?: String;
-  number?: String;
-}
-
-export interface Image {
-  name?: string;
-  url?: string;
-  size?: number;
-}
+import { Coordinate } from './coordinate.interface';
+import { Phone } from './phone.interface';
+import { Image } from './image.interface';
 
 export interface Company {
   _id?: string;
