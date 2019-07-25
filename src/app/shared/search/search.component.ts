@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDatepickerInputEvent, MatDatepicker } from '@angular/material';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-search',
@@ -27,12 +28,7 @@ export class SearchComponent implements OnInit {
 
   form: FormGroup;
   options: FormGroup;
-  destinies = [
-    { value: 1, viewValue: 'Bogota' },
-    { value: 2, viewValue: 'Medellin' },
-    { value: 3, viewValue: 'Cali' },
-    { value: 4, viewValue: 'Amazonas' },
-  ];
+  destinies = [{ value: 1, viewValue: 'Bogota' }, { value: 2, viewValue: 'Medellin' }, { value: 3, viewValue: 'Cali' }, { value: 4, viewValue: 'Amazonas' }];
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
@@ -65,7 +61,9 @@ export class SearchComponent implements OnInit {
 
   addEventStart(event: MatDatepickerInputEvent<Date>) {
     this.startDate = event.value;
-    if (this.startDate >= this.endDate) {
+    console.log(this.startDate, this.endDate);
+    if (this.startDate >= this.endDate || isNullOrUndefined(this.endDate)) {
+      this.endDate = new Date(this.startDate);
       this.endDate.setDate(this.startDate.getDate() + 1);
       this.form.controls['endDate'].setValue(this.endDate);
     }
