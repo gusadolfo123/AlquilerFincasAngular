@@ -8,7 +8,6 @@ import { Result } from '../models/Result.interface';
 export class CompanyService {
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDNhMGQwOTNmMjA2YzA1NzhhMGQ5OWYiLCJpYXQiOjE1NjQwODU1MTN9.WYnB5M7aQP7Ee4is-eCf8n2HOH2Mt_0UadKjvHqvQVA',
   });
 
   constructor(private httpClient: HttpClient) {}

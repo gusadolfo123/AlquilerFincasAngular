@@ -16,9 +16,11 @@
           <div class="col-md-6">
             <div class="">
               <h3 class="font-bold"><i class="fas fa-mobile-alt"></i> Celular:</h3>
-              <a href="" class=""> 3143151172</a>
+
+              <a *ngFor="let phoneCel of phones; let i = index" href="" class=""> {{ phoneCel.number }}<br /> </a>
+
               <h3 class="font-bold"><i class="fab fa-whatsapp"></i> Whatsapp:</h3>
-              <a href="" class=""> 3143151172</a>
+              <a href="" class=""> {{ company.whatsapp }}</a>
             </div>
           </div>
         </div>
@@ -29,8 +31,7 @@
             <img src="assets/images/certif.webp" alt="" class="rounded-full w-20 h-20 mx-auto" />
           </div>
           <p class="w-2/3">
-            Cada una de nuestras fincas, antes de ser publicada, pasa por un riguroso sistema de verificación de sus
-            propietarios.
+            Cada una de nuestras fincas, antes de ser publicada, pasa por un riguroso sistema de verificación de sus propietarios.
           </p>
         </div>
       </div>

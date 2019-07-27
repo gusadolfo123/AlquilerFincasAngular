@@ -8,17 +8,7 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit {
-  company: [Company];
-  constructor(private companyService: CompanyService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.getCompany();
-  }
-
-  getCompany() {
-    this.companyService.getCompany().subscribe(result => {
-      this.company = result.object as [Company];
-      console.log(this.company);
-    });
-  }
+  ngOnInit() {}
 }

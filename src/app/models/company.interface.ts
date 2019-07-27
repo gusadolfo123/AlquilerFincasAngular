@@ -7,9 +7,12 @@ export interface Company {
   name?: string;
   dir?: string;
   coordinate?: Coordinate;
-  phones?: [Phone];
-  images?: [Image];
+  phones?: Phone[];
+  images?: Image[];
   whatsapp?: string;
+  facebook?: string;
+  instragram?: string;
+  twitter?: string;
   mission?: string;
   vision?: string;
   description?: string;
