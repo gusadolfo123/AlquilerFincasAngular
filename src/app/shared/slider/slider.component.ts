@@ -28,10 +28,10 @@ export class SliderComponent implements OnInit {
   }
 
   getCompany() {
-    this.companyService.getCompany().subscribe(result => {
-      this.company = result.object as Company[];
-      this.avatars = this.company[0].images as Image[];
-    });
+    // this.companyService.getCompany().subscribe(result => {
+    //   this.company = result.object as Company[];
+    //   this.avatars = this.company[0].images as Image[];
+    // });
   }
 
   indexChanged(index) {
