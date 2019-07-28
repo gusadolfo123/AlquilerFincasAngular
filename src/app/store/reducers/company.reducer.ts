@@ -28,7 +28,7 @@ export function CompanyReducer(state = initialState, action: fromCompany.Company
         ...state,
         loaded: true,
         loading: false,
-        company: { ...state.company },
+        company: { ...action.company },
       };
     case fromCompany.CompanyActionType.LoadCompany_Fail:
       return {

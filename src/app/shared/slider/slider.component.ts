@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Company } from 'src/app/models/company.interface';
 import { CompanyService } from 'src/app/services/company.service';
 import { Image } from 'src/app/models/image.interface';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css'],
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, OnDestroy {
   private company: Company[];
   private avatars: Image[] = [{ url: 'https://picsum.photos/1920/800/?image=1052' }];
 
@@ -20,18 +24,17 @@ export class SliderComponent implements OnInit {
   direction = 'right';
   directionToggle = true;
   autoplay = true;
+  subscription: Subscription = new Subscription();
 
-  constructor(private companyService: CompanyService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.getCompany();
-  }
-
-  getCompany() {
-    // this.companyService.getCompany().subscribe(result => {
-    //   this.company = result.object as Company[];
-    //   this.avatars = this.company[0].images as Image[];
-    // });
+    this.subscription = this.store
+      .select('Company')
+      .pipe(filter(res => res.company != null)) // solo permite pasar el observable si este no es null
+      .subscribe(result => {
+        this.avatars = result.company.images;
+      });
   }
 
   indexChanged(index) {
@@ -44,5 +47,9 @@ export class SliderComponent implements OnInit {
 
   a(i) {
     // console.log(i);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

@@ -11,7 +11,7 @@ export interface Company {
   images?: Image[];
   whatsapp?: string;
   facebook?: string;
-  instragram?: string;
+  instagram?: string;
   twitter?: string;
   mission?: string;
   vision?: string;

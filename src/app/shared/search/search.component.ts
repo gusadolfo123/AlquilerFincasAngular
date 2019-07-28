@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDatepickerInputEvent, MatDatepicker } from '@angular/material';
 import { isNullOrUndefined } from 'util';
@@ -8,7 +8,7 @@ import { isNullOrUndefined } from 'util';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('picker1', { static: true }) picker1: MatDatepicker<Date>;
   @ViewChild('picker2', { static: true }) picker2: MatDatepicker<Date>;
 
@@ -47,6 +47,8 @@ export class SearchComponent implements OnInit {
       floatLabel: 'never',
     });
   }
+
+  ngOnDestroy(): void {}
 
   onSubmit() {
     for (const key in this.form.controls) {
