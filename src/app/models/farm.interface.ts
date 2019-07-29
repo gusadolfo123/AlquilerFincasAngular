@@ -12,6 +12,9 @@ export interface Farm {
   alias?: string;
   dir?: string;
   description?: string;
+  type?: string;
+  qualification?: number;
+  city?: string;
   coordinate?: Coordinate;
   images?: [Image];
   prices?: {

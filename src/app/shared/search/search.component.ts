@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatDatepickerInputEvent, MatDatepicker } from '@angular/material';
 import { isNullOrUndefined } from 'util';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
+import { Subscription } from 'rxjs';
+import { LoadCities } from 'src/app/store/actions/cities.actions';
+import { City } from 'src/app/models/city.interface';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +21,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   currentDate: Date = new Date();
   startDate: Date;
   endDate: Date;
+  subscription: Subscription = new Subscription();
 
   myFilter = (d: Date): boolean => {
     // const day = d.getDay();
@@ -28,11 +35,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   options: FormGroup;
-  destinies = [{ value: 1, viewValue: 'Bogota' }, { value: 2, viewValue: 'Medellin' }, { value: 3, viewValue: 'Cali' }, { value: 4, viewValue: 'Amazonas' }];
+  destinies: City[] = []; // [{ value: 1, viewValue: 'Bogota' }, { value: 2, viewValue: 'Medellin' }, { value: 3, viewValue: 'Cali' }, { value: 4, viewValue: 'Amazonas' }];
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -42,6 +49,16 @@ export class SearchComponent implements OnInit, OnDestroy {
       minor_guests: new FormControl('', Validators.required),
       destinies: new FormControl(this.destinies, Validators.required),
     });
+
+    // call action
+    this.store.dispatch(new LoadCities());
+    this.subscription = this.store
+      .select('Cities')
+      .pipe(filter(res => res.cities != null))
+      .subscribe(result => {
+        this.destinies = result.cities;
+      });
+
     this.options = new FormBuilder().group({
       hideRequired: false,
       floatLabel: 'never',

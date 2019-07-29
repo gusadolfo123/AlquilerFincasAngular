@@ -28,7 +28,7 @@ export function FarmsReducer(state = initialState, action: fromFarms.FarmsAction
         ...state,
         loading: false,
         loaded: true,
-        farms: { ...state.farms },
+        farms: [...action.farms],
       };
     case fromFarms.FarmsActionType.LoadFarms_Fail:
       return {
