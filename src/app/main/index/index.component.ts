@@ -27,9 +27,18 @@ export class IndexComponent implements OnInit, OnDestroy {
       .select('Farms')
       .pipe(filter(res => res.farms != null))
       .subscribe(result => {
-        this.TopCondominium = result.farms.filter(farm => farm.qualification == 5 && farm.type == 'condominio')[0];
-        this.TopCountry = result.farms.filter(farm => farm.qualification == 5 && farm.type == 'campestre')[0];
-        this.TopUrban = result.farms.filter(farm => farm.qualification == 5 && farm.type == 'urbana')[0];
+        let condominiums = result.farms.filter(farm => farm.type == 'condominio');
+        let countries = result.farms.filter(farm => farm.type == 'campestre');
+        let urbans = result.farms.filter(farm => farm.type == 'urbana');
+
+        let maxCondominium = Math.max.apply(Math, condominiums.map(o => o.qualification));
+        let maxCountries = Math.max.apply(Math, countries.map(o => o.qualification));
+        let maxUrbans = Math.max.apply(Math, urbans.map(o => o.qualification));
+
+        this.TopCondominium = condominiums.filter(element => element.qualification == maxCondominium)[0];
+        this.TopCountry = countries.filter(element => element.qualification == maxCountries)[0];
+        this.TopUrban = urbans.filter(element => element.qualification == maxUrbans)[0];
+
         console.log(1, this.TopCondominium);
         console.log(2, this.TopCountry);
         console.log(3, this.TopUrban);
