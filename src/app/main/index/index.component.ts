@@ -14,9 +14,18 @@ import { LoadFarms } from 'src/app/store/actions/farms.actions';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit, OnDestroy {
-  TopCondominium: Farm = null;
-  TopUrban: Farm = null;
-  TopCountry: Farm = null;
+  TopCondominium: Farm = {
+    description: '',
+    images: [{ url: '' }],
+  };
+  TopUrban: Farm = {
+    description: '',
+    images: [{ url: '' }],
+  };
+  TopCountry: Farm = {
+    description: '',
+    images: [{ url: '' }],
+  };
   subscription: Subscription = new Subscription();
 
   constructor(private store: Store<AppState>) {}
@@ -39,9 +48,9 @@ export class IndexComponent implements OnInit, OnDestroy {
         this.TopCountry = countries.filter(element => element.qualification == maxCountries)[0];
         this.TopUrban = urbans.filter(element => element.qualification == maxUrbans)[0];
 
-        console.log(1, this.TopCondominium);
-        console.log(2, this.TopCountry);
-        console.log(3, this.TopUrban);
+        console.log(1, this.TopCondominium.images);
+        console.log(2, this.TopCountry.images);
+        console.log(3, this.TopUrban.images);
       });
   }
 

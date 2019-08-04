@@ -38,7 +38,7 @@ export class FooterComponent implements OnInit, OnDestroy {
       .pipe(filter(res => res.company != null)) // solo permite pasar el observable si este no es null
       .subscribe(result => {
         this.company = result.company;
-        this.phones = result.company.phones;
+        this.phones = result.company.phones.filter(x => x.phone_type == 'celular');
       });
   }
 

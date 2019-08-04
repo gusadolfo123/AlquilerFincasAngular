@@ -23,5 +23,5 @@ export interface Farm {
     high_season: SeasonPrice;
   };
   services?: [string];
-  terms_conditions: [string];
+  terms_conditions?: [string];
 }
