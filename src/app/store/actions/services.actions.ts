@@ -3,22 +3,22 @@ import { Service } from 'src/app/models/service.interface';
 
 export enum ServicesActionType {
   LoadServices = '[Services] Load Services',
-  LoadServices_Success = '[Services] Load Services',
-  LoadServices_Fail = '[Services] Load Services',
+  LoadServices_Success = '[Services] Load Services Success',
+  LoadServices_Fail = '[Services] Load Services Fail',
 }
 
-export class LoadServices implements Action {
+export class LoadServicesAction implements Action {
   readonly type = ServicesActionType.LoadServices;
 }
 
-export class LoadServicesSuccess implements Action {
+export class LoadServicesSuccessAction implements Action {
   readonly type = ServicesActionType.LoadServices_Success;
   constructor(public services: Service[]) {}
 }
 
-export class LoadServicesFail implements Action {
+export class LoadServicesFailAction implements Action {
   readonly type = ServicesActionType.LoadServices_Fail;
   constructor(public payload: any) {}
 }
 
-export type ServicesActions = LoadServices | LoadServicesSuccess | LoadServicesFail;
+export type ServicesActions = LoadServicesAction | LoadServicesSuccessAction | LoadServicesFailAction;

@@ -15,14 +15,32 @@ const initialState: ServicesState = {
   error: null,
 };
 
-export function ServicesReducer(state = initialState, action: fromService.ServicesActions): ServicesState {
+export function ServiceReducer(state = initialState, action: fromService.ServicesActions): ServicesState {
   switch (action.type) {
     case fromService.ServicesActionType.LoadServices:
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     case fromService.ServicesActionType.LoadServices_Success:
-      return { ...state, loaded: true, loading: false, services: [...action.services] };
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        services: [...action.services],
+      };
     case fromService.ServicesActionType.LoadServices_Fail:
-      return { ...state, loading: false, loaded: true, error: {} };
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        error: {
+          status: action.payload.status,
+          message: action.payload.message,
+          url: action.payload.url,
+        },
+      };
     default:
       return state;
   }
