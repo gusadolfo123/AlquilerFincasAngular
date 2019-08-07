@@ -13,7 +13,7 @@ export class ServicesService {
   constructor(private client: HttpClient) {}
 
   getServices() {
-    const urlApi = `http://localhost:4545/api/v1/farms`;
+    const urlApi = `http://localhost:4545/api/v1/services`;
     return this.client.get<Result>(urlApi, { headers: this.headers });
   }
 }

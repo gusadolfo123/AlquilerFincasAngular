@@ -47,10 +47,6 @@ export class IndexComponent implements OnInit, OnDestroy {
         this.TopCondominium = condominiums.filter(element => element.qualification == maxCondominium)[0];
         this.TopCountry = countries.filter(element => element.qualification == maxCountries)[0];
         this.TopUrban = urbans.filter(element => element.qualification == maxUrbans)[0];
-
-        console.log(1, this.TopCondominium.images);
-        console.log(2, this.TopCountry.images);
-        console.log(3, this.TopUrban.images);
       });
   }
 

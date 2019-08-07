@@ -8,10 +8,11 @@ import { SearchComponent } from './search/search.component';
 import { SliderComponent } from './slider/slider.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, NavbarComponent, SearchComponent, SliderComponent],
+  declarations: [FooterComponent, HeaderComponent, NavbarComponent, SearchComponent, SliderComponent, ServiceComponent],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MaterialModule],
-  exports: [FooterComponent, HeaderComponent, NavbarComponent, SearchComponent, SliderComponent],
+  exports: [FooterComponent, HeaderComponent, NavbarComponent, SearchComponent, SliderComponent, ServiceComponent],
 })
 export class SharedModule {}

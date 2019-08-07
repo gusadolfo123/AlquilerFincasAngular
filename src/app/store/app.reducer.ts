@@ -6,6 +6,7 @@ export interface AppState {
   Company: reducers.CompanyState;
   Cities: reducers.CitiesState;
   Farms: reducers.FarmsState;
+  Services: reducers.ServicesState;
 }
 
 export const AppReducers: ActionReducerMap<AppState> = {
@@ -13,4 +14,5 @@ export const AppReducers: ActionReducerMap<AppState> = {
   Company: reducers.CompanyReducer,
   Cities: reducers.CityReducer,
   Farms: reducers.FarmsReducer,
+  Services: reducers.ServiceReducer,
 };
