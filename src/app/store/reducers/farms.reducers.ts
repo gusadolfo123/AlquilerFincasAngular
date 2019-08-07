@@ -1,6 +1,5 @@
 import * as fromFarms from '../actions/farms.actions';
 import { Farm } from 'src/app/models/farm.interface';
-
 export interface FarmsState {
   farms: Farm[];
   loaded: boolean;

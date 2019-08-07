@@ -1,7 +1,4 @@
-<header
-  class="bg-gray-300 p-16"
-  style="background-image: url(https://picsum.photos/1920/800/?image=478); background-position:center;"
->
+<header class="bg-gray-300 p-16" style="background-image: url(https://picsum.photos/1920/800/?image=478); background-position:center;">
   <div class="container">
     <h1 class="text-center font-bold text-white text-4xl">Encuentra tu Sitio Ideal</h1>
   </div>
@@ -11,11 +8,7 @@
 
 <div class="container mx-auto mt-4 flex">
   <div class="mt-2 w-1/5">
-    <span
-      class="border rounded-full px-2 border-green-500 pb-1 hover:bg-green-500 hover:text-white"
-      data-toggle="tooltip"
-      data-placement="top"
-      title="Borrar Filtro"
+    <span class="border rounded-full px-2 border-green-500 pb-1 hover:bg-green-500 hover:text-white" data-toggle="tooltip" data-placement="top" title="Borrar Filtro"
       >Billar
       <a href="#" class="hover:text-white">
         <i class="far fa-times-circle"></i>
@@ -23,13 +16,7 @@
     </span>
   </div>
   <div class="flex justify-center items-center mt-2 px-3 w-4/5">
-    <input
-      type="text"
-      name="search"
-      id="search"
-      placeholder="Buscar..."
-      class="border-l border-t border-b border-green-500 px-4 rounded-bl-full rounded-tl-full py-1 w-full bg-gray-300 outline-none"
-    /><i
+    <input type="text" name="search" id="search" placeholder="Buscar..." class="border-l border-t border-b border-green-500 px-4 rounded-bl-full rounded-tl-full py-1 w-full bg-gray-300 outline-none" /><i
       class="fas fa-search px-4 py-2 rounded-br-full rounded-tr-full border-t border-b border-r border-green-500 bg-gray-300 cursor-pointer"
       id="iconSearch"
     ></i>
@@ -56,16 +43,7 @@
       </div>
       <div>
         <label for="" class="text-center mt-4">Precios</label>
-        <input
-          id="ex2"
-          type="text"
-          class="span2"
-          value=""
-          data-slider-min="10"
-          data-slider-max="1000"
-          data-slider-step="5"
-          data-slider-value="[250,450]"
-        />
+        <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]" />
       </div>
     </div>
     <div class=" flex-col my-4 px-3 py-2 text-center bg-green-500 border-b-4 border-green-700">
@@ -74,43 +52,36 @@
   </aside>
   <section class="mt-2 w-4/5">
     <div class="flex justify-between mx-3 text-sm text-white">
-      <p class="bg-green-500 rounded-full px-2">Total Fincas</p>
+      <p class="bg-green-500 rounded-full px-2">
+        Total Fincas:
+        <ng-container *ngIf="farms">
+          {{ farms.length }}
+        </ng-container>
+      </p>
       <p class="bg-green-500 rounded-full px-2">Pagina:</p>
     </div>
     <div class="flex content-start flex-wrap">
-      <div class="w-1/3 p-6">
-        <div class=" pb-2 shadow hover:shadow-md">
-          <div class="image-wrapper w-full">
-            <a href="#">
-              <img class="w-full h-48" src="" alt="" />
-            </a>
-          </div>
-          <div class="px-6 py-2">
-            <div class="font-bold text-sm"></div>
-            <p class="text-gray-700 text-base">
-              asdada
-            </p>
-          </div>
-          <div class="px-4 -mx-2 bg-green-500 text-white prices flex justify-between">
-            <p
-              class="flex-1 text-left cursor-pointer"
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Valor por Persona"
-            >
-              <i class="fas fa-user"></i> $
-            </p>
-            <p
-              class="flex-1 text-right cursor-pointer"
-              data-toggle="tooltip"
-              data-placement="bottom"
-              title="Valor Total"
-            >
-              <i class="fas fa-users"></i> $
-            </p>
+      <ng-container *ngIf="farms">
+        <div *ngFor="let farm of farms" class="w-1/3 p-6">
+          <div class=" pb-2 shadow hover:shadow-md">
+            <div class="image-wrapper w-full">
+              <a href="#">
+                <img class="w-full h-48" src="{{ farm.images[0].url }}" alt="" />
+              </a>
+            </div>
+            <div class="px-6 py-2">
+              <div class="font-bold text-sm"></div>
+              <p class="text-gray-700 text-base">
+                {{ farm.description }}
+              </p>
+            </div>
+            <div class="px-4 -mx-2 bg-green-500 text-white prices flex justify-between">
+              <p class="flex-1 text-left cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Valor por Persona"><i class="fas fa-user"></i> {{ farm.prices.mid_season.per_person.$numberDecimal | currency }}</p>
+              <p class="flex-1 text-right cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Valor Total"><i class="fas fa-users"></i> {{ farm.prices.mid_season.total.$numberDecimal | currency }}</p>
+            </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
     <div class="flex-row my-4">
       <nav aria-label="Page navigation example">

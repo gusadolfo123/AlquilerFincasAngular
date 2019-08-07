@@ -16,3 +16,7 @@
 .bg-instagram:hover {
   background-color: #2160a367;
 }
+#logo {
+  position: relative;
+  left: -85px;
+}
