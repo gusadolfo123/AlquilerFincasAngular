@@ -40,20 +40,15 @@
     <div class="flex content-start flex-wrap">
       <ng-container *ngIf="farms">
         <div *ngFor="let farm of farms" class="w-1/3 p-6">
-          <div class=" pb-2 shadow hover:shadow-md">
-            <div class="image-wrapper w-full">
+          <span class="flex-1 text-left cursor-pointer bg-green-500 text-sm text-white px-2 rounded-b-lg rounded-t-lg tooltip-img" data-toggle="tooltip" data-placement="top" title="Ciudad"><i class="fas fa-building"></i> {{ farm.city }}</span>
+          <div class="bg-white rounded-t-lg rounded-b-lg pb-2 shadow hover:shadow-md">
+            <div class="image-wrapper w-full rounded-t-lg">
               <a href="#" class="text-decoration-none">
-                <p class="bg-green-500 text-white relative top-0 text-center">{{ farm.city }}</p>
-                <img class="w-full h-48 m-0 p-0" src="{{ farm.images[0].url }}" alt="" />
+                <img class="w-full h-75 m-0 p-0" src="{{ farm.image_card.url }}" alt="" />
               </a>
             </div>
-            <div class="px-6 py-2">
-              <div class="font-bold text-sm"></div>
-              <p class="text-gray-700 text-base">
-                {{ farm.description }}
-              </p>
-            </div>
-            <div class="px-4 -mx-2 bg-green-500 text-white prices flex justify-between">
+
+            <div class="px-4 -mx-2 bg-green-500 text-white prices flex justify-between text-sm text-white">
               <p class="flex-1 text-left cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Valor por Persona"><i class="fas fa-user"></i> {{ farm.prices.mid_season.per_person.$numberDecimal | currency }}</p>
               <p class="flex-1 text-right cursor-pointer" data-toggle="tooltip" data-placement="bottom" title="Valor Total"><i class="fas fa-users"></i> {{ farm.prices.mid_season.total.$numberDecimal | currency }}</p>
             </div>

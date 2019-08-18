@@ -16,6 +16,7 @@ export interface Farm {
   qualification?: number;
   city?: string;
   coordinate?: Coordinate;
+  image_card?: Image;
   images?: [Image];
   prices?: {
     low_season: SeasonPrice;
