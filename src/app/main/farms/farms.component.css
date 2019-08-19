@@ -3,3 +3,7 @@
   top: 25px !important;
   left: 3px;
 }
+.front {
+  position: relative;
+  z-index: 10;
+}
