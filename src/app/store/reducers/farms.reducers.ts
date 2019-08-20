@@ -1,10 +1,12 @@
 import * as fromFarms from '../actions/farms.actions';
-import { Farm } from 'src/app/models/farm.interface';
+import { Farm, FarmsPerPage } from 'src/app/models/farm.interface';
+
 export interface FarmsState {
   farms: Farm[];
   loaded: boolean;
   loading: boolean;
   error: any;
+  farmsPerPage: FarmsPerPage;
 }
 
 const initialState: FarmsState = {
@@ -12,6 +14,7 @@ const initialState: FarmsState = {
   loaded: false,
   loading: false,
   error: null,
+  farmsPerPage: null,
 };
 
 export function FarmsReducer(state = initialState, action: fromFarms.FarmsActions): FarmsState {
@@ -39,6 +42,21 @@ export function FarmsReducer(state = initialState, action: fromFarms.FarmsAction
           message: action.payload.message,
           url: action.payload.url,
         },
+      };
+    case fromFarms.FarmsActionType.LoadFarmsPerPage:
+      return {
+        ...state,
+        loaded: false,
+        loading: true,
+        error: null,
+      };
+    case fromFarms.FarmsActionType.LoadFarmsPerPage_Success:
+      return {
+        ...state,
+        loaded: true,
+        loading: false,
+        error: null,
+        farmsPerPage: { ...action.result },
       };
     default:
       return state;

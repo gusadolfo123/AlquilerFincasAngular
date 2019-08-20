@@ -4,7 +4,7 @@ import * as farmsActions from '../actions/farms.actions';
 import { of } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { FarmsService } from 'src/app/services/farms.service';
-import { Farm } from 'src/app/models/farm.interface';
+import { Farm, FarmsPerPage } from 'src/app/models/farm.interface';
 
 @Injectable()
 export class FarmsEffects {
@@ -16,8 +16,22 @@ export class FarmsEffects {
     switchMap(() => {
       return this.farmsService.getFarms().pipe(
         map(result => {
-          let farms = result.object as Farm[];
-          return new farmsActions.LoadFarmsSuccess(farms);
+          let farmsPerPage = result.object as FarmsPerPage;
+          return new farmsActions.LoadFarmsSuccess(farmsPerPage.farms);
+        }),
+        catchError(error => of(new farmsActions.LoadFarmsFail(error))),
+      );
+    }),
+  );
+
+  @Effect()
+  loadFarmsPerPage$ = this.actions$.pipe(
+    ofType(farmsActions.FarmsActionType.LoadFarmsPerPage),
+    switchMap(data => {
+      return this.farmsService.getFarmsPerPage(data['id']).pipe(
+        map(result => {
+          let farmsPerPage = result.object as FarmsPerPage;
+          return new farmsActions.LoadFarmsPerPageSuccess(farmsPerPage);
         }),
         catchError(error => of(new farmsActions.LoadFarmsFail(error))),
       );

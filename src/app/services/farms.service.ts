@@ -18,7 +18,7 @@ export class FarmsService {
   }
 
   getFarmsPerPage(id: number) {
-    const urlApi = `http://localhost:4545/api/v1/farms/${id}`;
+    const urlApi = `http://localhost:4545/api/v1/farms?farmsPage=6&currentPage=${id}`;
     return this.client.get<Result>(urlApi, { headers: this.headers });
   }
 }

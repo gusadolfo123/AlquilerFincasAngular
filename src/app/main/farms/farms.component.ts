@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Farm } from 'src/app/models/farm.interface';
-import { LoadFarms } from 'src/app/store/actions/farms.actions';
+import { Farm, FarmsPerPage } from 'src/app/models/farm.interface';
+import { LoadFarms, LoadFarmsPerPage } from 'src/app/store/actions/farms.actions';
 
 @Component({
   selector: 'app-farms',
@@ -13,17 +13,17 @@ import { LoadFarms } from 'src/app/store/actions/farms.actions';
 })
 export class FarmsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
-  farms: Farm[] = null;
+  farmsPerPage: FarmsPerPage = null;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.dispatch(new LoadFarms());
+    this.store.dispatch(new LoadFarmsPerPage(1));
     this.subscription = this.store
       .select('Farms')
-      .pipe(filter(res => res.farms != null))
+      .pipe(filter(res => res.farmsPerPage != null))
       .subscribe(result => {
-        this.farms = result.farms;
+        this.farmsPerPage = result.farmsPerPage;
       });
   }
 

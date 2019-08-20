@@ -6,6 +6,13 @@ interface SeasonPrice {
   per_person?: number;
 }
 
+export interface FarmsPerPage {
+  farms?: Farm[];
+  current?: number;
+  pages?: number;
+  total?: number;
+}
+
 export interface Farm {
   _id?: string;
   name?: string;

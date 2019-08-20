@@ -1,14 +1,11 @@
-<h3 class="text-center border-t-4 border-green-700 p-6 text-2xl font-semibold bg-green-500 text-gray-100">
+<h3 class="text-center border-t-4 border-green-700 p-2 text-2xl font-semibold bg-green-500 text-gray-100">
   Servicios
 </h3>
-<div class="flex-col py-4 px-3 bg-white">
+<div class="flex-col py-4 px-3 bg-white border-b-4 border-green-700">
   <ng-container *ngIf="services">
     <div class="custom-control custom-checkbox" *ngFor="let service of services; let i = index">
       <input type="checkbox" class="custom-control-input" id="{{ service.name }}" />
       <label class="custom-control-label" for="{{ service.name }}">{{ service.name }}</label>
     </div>
   </ng-container>
-</div>
-<div class=" flex-col mb-4 px-3 py-2 text-center bg-green-500 border-b-4 border-green-700">
-  <a href="#" class="bg-white px-3 py-1 text-xl text-gray-600 rounded-full ">Filtrar</a>
 </div>

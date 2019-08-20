@@ -14,18 +14,9 @@ import { LoadFarms } from 'src/app/store/actions/farms.actions';
   styleUrls: ['./index.component.css'],
 })
 export class IndexComponent implements OnInit, OnDestroy {
-  TopCondominium: Farm = {
-    description: '',
-    images: [{ url: '' }],
-  };
-  TopUrban: Farm = {
-    description: '',
-    images: [{ url: '' }],
-  };
-  TopCountry: Farm = {
-    description: '',
-    images: [{ url: '' }],
-  };
+  TopCondominium: Farm = null;
+  TopUrban: Farm = null;
+  TopCountry: Farm = null;
   subscription: Subscription = new Subscription();
 
   constructor(private store: Store<AppState>) {}

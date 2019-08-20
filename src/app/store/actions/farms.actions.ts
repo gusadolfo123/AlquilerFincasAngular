@@ -1,14 +1,26 @@
 import { Action } from '@ngrx/store';
-import { Farm } from 'src/app/models/farm.interface';
+import { Farm, FarmsPerPage } from 'src/app/models/farm.interface';
 
 export enum FarmsActionType {
   LoadFarms = '[Farms] Load Farms',
   LoadFarms_Success = '[Farms] Load Farms Success',
   LoadFarms_Fail = '[Farms] Load Farms Fail',
+  LoadFarmsPerPage = '[Farms] Load Farms Per Page',
+  LoadFarmsPerPage_Success = '[Farms] Load Farms Per Page Success',
 }
 
 export class LoadFarms implements Action {
   readonly type = FarmsActionType.LoadFarms;
+}
+
+export class LoadFarmsPerPage implements Action {
+  readonly type = FarmsActionType.LoadFarmsPerPage;
+  constructor(public id: Number) {}
+}
+
+export class LoadFarmsPerPageSuccess implements Action {
+  readonly type = FarmsActionType.LoadFarmsPerPage_Success;
+  constructor(public result: FarmsPerPage) {}
 }
 
 export class LoadFarmsSuccess implements Action {
@@ -21,4 +33,4 @@ export class LoadFarmsFail implements Action {
   constructor(public payload: any) {}
 }
 
-export type FarmsActions = LoadFarms | LoadFarmsSuccess | LoadFarmsFail;
+export type FarmsActions = LoadFarms | LoadFarmsSuccess | LoadFarmsFail | LoadFarmsPerPage | LoadFarmsPerPageSuccess;
