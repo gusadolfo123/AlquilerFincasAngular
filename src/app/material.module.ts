@@ -17,6 +17,9 @@ import {
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { NgxHmCarouselModule } from 'ngx-hm-carousel';
+
+import { TableModule } from 'primeng/table';
+import { DataViewModule } from 'primeng/dataview';
 @NgModule({
   imports: [
     MatButtonModule,
@@ -35,6 +38,8 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
     MatCommonModule,
     MatCardModule,
     NgxHmCarouselModule,
+    TableModule,
+    DataViewModule,
   ],
   exports: [
     MatButtonModule,
@@ -53,6 +58,8 @@ import { NgxHmCarouselModule } from 'ngx-hm-carousel';
     MatCommonModule,
     MatCardModule,
     NgxHmCarouselModule,
+    TableModule,
+    DataViewModule,
   ],
 })
 export class MaterialModule {}

@@ -26,3 +26,9 @@ ng g m main/farms
 ng g s services/auth
 ng g s services/company
 
+
+// implementacion de https://www.primefaces.org/primeng/#/setup
+npm install primeng --save
+npm install primeicons --save
+npm install @angular/animations --save
+
